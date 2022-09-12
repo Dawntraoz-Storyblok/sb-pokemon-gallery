@@ -18,6 +18,8 @@
 
 @font-face {
   font-family: "Clarika";
+  font-style: normal;
   src: url('../fonts/Clarika/font.woff2') format('woff2'), url('../fonts/Clarika/font.woff') format('woff');
+  font-display: swap;
 }
 
