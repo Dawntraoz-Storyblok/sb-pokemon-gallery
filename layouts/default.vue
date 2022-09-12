@@ -3,3 +3,15 @@
     <slot />
   </main>
 </template>
+
+<script setup>
+useHead({
+  title: 'Pokemon cards album',
+  meta: [
+    { name: 'description', content: 'The Pokemon album you were looking for with optimized images.' }
+  ],
+  htmlAttrs: {
+    lang: 'en'
+  }
+})
+</script>
