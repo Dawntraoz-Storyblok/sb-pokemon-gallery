@@ -1,28 +1,26 @@
-# Nuxt 3 Minimal Starter
+# Storyblok + Nuxt 3 Pokemon album gallery
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+**(WIP)** This repo is a demo for an article that will be published soon (I will add the link when it's live).
 
 ## Setup
 
-Make sure to install the dependencies:
+> To connect Nuxt 3 to Storyblok I recommend you to have a look at the guide [Add a headless CMS to Nuxt 3 in 5 minutes](https://www.storyblok.com/tp/add-a-headless-CMS-to-nuxt-3-in-5-minutes).
+
+Install the dependencies:
 
 ```bash
 # yarn
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
 ```
 
 ## Development Server
 
-Start the development server on http://localhost:3000
+> Storyblok v2 requires that your website is served via HTTPS. You can follow the instructions in Storyblok's FAQ entry: [How to set up SSL in Nuxt 3](https://www.storyblok.com/faq/setting-up-https-on-localhost-in-nuxt-3).
+
+Start the development server on https://localhost:3000
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 ## Production
@@ -30,7 +28,7 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+yarn generate
 ```
 
 Locally preview production build:
@@ -39,4 +37,4 @@ Locally preview production build:
 npm run preview
 ```
 
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+Checkout the [Nuxt 3 deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
