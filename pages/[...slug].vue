@@ -1,8 +1,14 @@
 <script setup>
 const { slug } = useRoute().params;
  
-const story = await useStoryblok(slug ? slug : 'home', {
+const { data } = await useAsyncData('count', () => useStoryblokApi().get(`cdn/stories/${slug ? slug : 'home'}`, {
   version: 'draft',
+}));
+
+const story = ref(data.value.data.story);
+
+onMounted(() => {
+  useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
 });
 </script>
  

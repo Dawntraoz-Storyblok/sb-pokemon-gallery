@@ -31,11 +31,12 @@ const { art_direction } = props.blok
 
 const { filename, alt, focus } = props.blok.original_image
 
-let srcset = ref('')
-
 const createImage = (original, width, height, focal = focus) => {
   return `${original}/m/${width}x${height}/filters:focal(${focal})`
 };
+
+
+let srcset = ref('')
 
 // Responsive images by density
 const { density_2x, density_3x } = props.blok
