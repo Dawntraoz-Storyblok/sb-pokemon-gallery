@@ -1,7 +1,8 @@
 <script setup>
 const { slug } = useRoute().params;
+const url = slug || 'home';
  
-const { data } = await useAsyncData('count', () => useStoryblokApi().get(`cdn/stories/${slug ? slug : 'home'}`, {
+const { data } = await useAsyncData(url, () => useStoryblokApi().get(`cdn/stories/${url}`, {
   version: 'draft',
 }));
 
