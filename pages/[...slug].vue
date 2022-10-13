@@ -2,15 +2,7 @@
 const { slug } = useRoute().params;
 const url = slug || 'home';
  
-const { data } = await useAsyncData(url, () => useStoryblokApi().get(`cdn/stories/${url}`, {
-  version: 'draft',
-}));
-
-const story = ref(data.value.data.story);
-
-onMounted(() => {
-  useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
-});
+const story = await useAsyncStoryblok(url, { version: 'draft' });
 </script>
  
 <template>
