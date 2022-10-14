@@ -6,5 +6,7 @@ const story = await useAsyncStoryblok(url, { version: 'draft' });
 </script>
  
 <template>
-  <StoryblokComponent v-if="story" :blok="story.content" />
+  <div class="container">
+    <StoryblokComponent v-if="story" :blok="story.content" />
+  </div>
 </template>

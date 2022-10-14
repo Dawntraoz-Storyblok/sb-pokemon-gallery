@@ -8,10 +8,10 @@
   },
   "devDependencies": {
     "axios": "^1.1.2",
-    "nuxt": "^3.0.0-rc.11"
+    "nuxt": "^3.0.0-rc.11",
+    "@nuxtjs/tailwindcss": "^5.3.5"
   },
   "dependencies": {
-    "@nuxtjs/tailwindcss": "^5.3.5",
     "@storyblok/nuxt": "^4.4.1"
   }
 }
