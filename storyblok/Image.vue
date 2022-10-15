@@ -9,16 +9,18 @@
         :height="height"
       >
     </template>
-    <img
-      :src="createImage(filename, width, height)"
+    <nuxt-img
+      provider="storyblok"
+      :src="filename"
       :width="width"
       :height="height"
-      :srcset="srcset"
-      :sizes="responsive_conditions"
-      :alt="alt"
+      v-bind:[srcset]="srcsetValue"
+      :sizes="widthsPerSize"
+      :modifiers="{ filters: { focal: focus } }"
       :loading="loading"
-      class="shadow-lg w-full"
+      :alt="alt"
       :class="{ 'rounded-xl': rounded }"
+      class="shadow-lg w-full"
     />
   </picture>
 </template>
@@ -26,7 +28,7 @@
 <script setup>
 const props = defineProps({ blok: Object })
 
-const { width, height, rounded, loading } = props.blok
+const { width, height, rounded, loading, responsive_widths } = props.blok
 const { art_direction } = props.blok
 
 const { filename, alt, focus } = props.blok.original_image
@@ -36,7 +38,8 @@ const createImage = (original, width, height, focal = focus) => {
 };
 
 
-let srcset = ref('')
+let srcset = responsive_widths ? '' : 'srcset'
+let srcsetValue = ref('')
 
 // Responsive images by density
 const { density_2x, density_3x } = props.blok
@@ -46,22 +49,14 @@ if (density_2x || density_3x) {
   densitiesSrcset += density_2x ? `, ${createImage(filename, width * 2, height * 2)} 2x` : ''
   densitiesSrcset += density_3x ? `, ${createImage(filename, width * 3, height * 3)} 3x` : ''
 
-  srcset.value = densitiesSrcset
+  srcsetValue.value = densitiesSrcset
 }
 
 // Responsive images by width
-const { responsive_widths, responsive_conditions } = props.blok
+let widthsPerSize = ''
 
 if (responsive_widths) {
-  const aspectRatio = width / height
-  const responsiveImages = responsive_widths.split(',')
-
-  let widthsSrcset = ''
-  responsiveImages.map(imageWidth => {
-    widthsSrcset += `${createImage(filename, imageWidth, Math.round(imageWidth / aspectRatio))} ${imageWidth}w,`
-    return true
-  })
-
-  srcset.value = widthsSrcset
+  const sizes = ['sm', 'md', 'lg', 'xl']
+  widthsPerSize = responsive_widths.split(',').map((w, i) => `${sizes[i]}:${w}px`).join(' ')
 }
 </script>

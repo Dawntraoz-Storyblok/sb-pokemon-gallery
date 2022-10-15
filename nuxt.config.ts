@@ -9,5 +9,11 @@ export default defineNuxtConfig({
       { accessToken: process.env.STORYBLOK_TOKEN }
     ],
     '@nuxtjs/tailwindcss',
-  ]
+    '@nuxt/image-edge',
+  ],
+  image: {
+    storyblok: {
+      baseURL: 'https://a.storyblok.com'
+    }
+  }
 })
