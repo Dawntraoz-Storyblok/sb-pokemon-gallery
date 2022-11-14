@@ -13,6 +13,10 @@ Install the dependencies:
 yarn install
 ```
 
+Duplicate the Storyblok space in your own account clicking on [this link](https://app.storyblok.com/#!/build/172320). Then go to Settings > Visual Editor and add the [https://localhost:3000/](https://localhost:3000/) as default preview URL.
+
+Rename `.env.example` to `.env` and add the token of your fresh created Storyblok space.
+
 ## Development Server
 
 > Storyblok v2 requires that your website is served via HTTPS. You can follow the instructions in Storyblok's FAQ entry: [How to set up SSL in Nuxt 3](https://www.storyblok.com/faq/setting-up-https-on-localhost-in-nuxt-3).
